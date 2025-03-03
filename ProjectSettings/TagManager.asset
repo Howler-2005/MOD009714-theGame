@@ -8,6 +8,9 @@ TagManager:
   - IglooScreen
   - 3D_UI_Element
   - PickUp
+  - Obstacle
+  - GameObj
+  - game manager
   layers:
   - Default
   - TransparentFX

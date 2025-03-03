@@ -1,16 +1,33 @@
+using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CollectableSpawner : MonoBehaviour
 {
     public GameObject collectablePrefab; // The collectable prefab to spawn
-    public int numberOfCollectables = 10; // Number of collectables to spawn
+    public int numberOfCollectables = 15;
     public float minRadius = 40f; // Minimum distance from the center
     public float maxRadius = 100f; // Maximum distance from the center
-
+    public int Score;
+    public int count;
     void Start()
     {
         SpawnCollectables();
+        Score = 0;
     }
+
+    private void Update()
+    {
+        
+        if (count == 10)
+        {
+            count -= 10;
+            numberOfCollectables = 10;
+            SpawnCollectables();
+            print("more have spawned");
+        }
+    }
+
 
     void SpawnCollectables()
     {
@@ -18,6 +35,7 @@ public class CollectableSpawner : MonoBehaviour
         {
             Vector3 randomPosition = GenerateRandomPosition();
             Instantiate(collectablePrefab, randomPosition, Quaternion.identity);
+           
         }
     }
 

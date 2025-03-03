@@ -11,10 +11,10 @@ public class PlaneController : MonoBehaviour
     public float maxSpeed = 100f;
     public float minSpeed = 10f;
 
-    private float throttleInput = 0f;
+    public float throttleInput = 0f;
     private Vector2 pitchRollInput; // Left Thumbstick or WASD
     private float yawInput;         // Right Thumbstick or Q/E
-    private float throttleDelta;    // Right Trigger or R/F
+    public float throttleDelta;    // Right Trigger or R/F
 
     [Header("Input Actions")]
     public InputActionReference pitchRollAction; // Vector2 for pitch and roll

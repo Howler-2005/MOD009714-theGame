@@ -39,4 +39,10 @@ public class PlayerBoundary : MonoBehaviour
         // Move the plane based on the calculated velocity
         transform.position += currentVelocity * Time.deltaTime;
     }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position,maxDistance);
+    }
 }

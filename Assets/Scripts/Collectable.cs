@@ -13,9 +13,19 @@ public class Collectable : MonoBehaviour
     public float spinSpeed = 360f; // Spin speed in degrees per second
 
     private Vector3 targetPosition; // Final position to zip toward
-
+    private Booster boost;
+    private GameObject player;
+    private CollectableSpawner CS;
+    private GameObject GM;
     void Start()
     {
+        GM = GameObject.FindWithTag("game manager");
+        player = GameObject.FindWithTag("GameObj");
+        boost = player.GetComponent<Booster>();
+        CS = GM.GetComponent<CollectableSpawner>();
+
+
+
         // Get or add the AudioSource component
         audioSource = GetComponent<AudioSource>();
         if (audioSource == null)
@@ -39,7 +49,8 @@ public class Collectable : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("Player collected the ring!");
-
+            boost.Nitro += 5f;
+            print("nitro gained; current fuel amount " + boost.Nitro);
             // Play the sound effect
             if (collectSound != null)
             {
@@ -104,5 +115,7 @@ public class Collectable : MonoBehaviour
 
         // Deactivate the object
         gameObject.SetActive(false);
+        CS.Score += 1;
+        CS.count += 1;
     }
 }
